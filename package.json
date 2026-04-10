@@ -1,0 +1,19 @@
+{
+  "author": "Lena Imdahl <mail@lenaimdahl.de>",
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.2.2",
+    "autoprefixer": "10.4.27",
+    "parcel": "2.16.4",
+    "postcss": "8.5.9",
+    "tailwindcss": "4.2.2"
+  },
+  "license": "GPL-3.0",
+  "name": "lenaimdahl.de",
+  "repository": "git@github.com:lenaimdahl/lenaimdahl.de.git",
+  "scripts": {
+    "build": "parcel build src/index.html",
+    "dev": "parcel src/index.html",
+    "dist": "rm -rf dist && npm run build"
+  },
+  "version": "1.0.0"
+}
