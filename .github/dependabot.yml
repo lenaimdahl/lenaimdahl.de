@@ -1,7 +1,26 @@
 version: 2
 updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    assignees:
+      - lenaimdahl
+      - ffflorian
+    commit-message:
+      prefix: fix(deps)
+      prefix-development: chore(deps-dev)
+    cooldown:
+      default-days: 5
+    groups:
+      tailwindcss:
+        patterns:
+          - tailwindcss
+          - "@tailwindcss/*"
+    open-pull-requests-limit: 99
+    versioning-strategy: increase
   - package-ecosystem: docker
-    directory: "/"
+    directory: /
     schedule:
       interval: weekly
     open-pull-requests-limit: 99
