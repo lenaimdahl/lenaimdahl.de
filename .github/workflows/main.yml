@@ -106,8 +106,8 @@ jobs:
         uses: ffflorian/actions/docker-image-release@83b8d7dce00aa38dea675be1e8174b5d46aae343
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          git_author: 'ffflorian'
-          git_email: 'git@ffflorian.de'
+          git_author: 'lenaimdahl'
+          git_email: 'mail@lenaimdahl.de'
 
   deploy:
     name: Deploy latest image
