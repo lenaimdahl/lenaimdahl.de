@@ -2,7 +2,7 @@
   "author": "Lena Imdahl <mail@lenaimdahl.de>",
   "devDependencies": {
     "@tailwindcss/postcss": "4.2.2",
-    "autoprefixer": "10.4.27",
+    "autoprefixer": "10.6.2",
     "parcel": "2.16.4",
     "postcss": "8.5.9",
     "tailwindcss": "4.2.2"
