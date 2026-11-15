@@ -20,6 +20,8 @@ updates:
     open-pull-requests-limit: 99
     versioning-strategy: increase
   - package-ecosystem: docker
+    commit-message:
+      prefix: fix(deps)
     directory: /
     schedule:
       interval: weekly
