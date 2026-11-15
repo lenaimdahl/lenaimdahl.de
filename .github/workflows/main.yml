@@ -1,0 +1,132 @@
+name: Main
+
+permissions: {}
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+        with:
+          node-version: 26
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+  lint_dockerfile:
+    name: Lint Dockerfile
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Lint Dockerfile
+        uses: hadolint/hadolint-action@06be81baf89a55ffd0e24b8f04a4185738dd3387
+        with:
+          dockerfile: Dockerfile
+
+  build_dockerfile:
+    name: Build Docker image
+    needs: build
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069
+
+      - name: Build Docker image
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc
+        with:
+          file: Dockerfile
+          push: false
+
+  test_nginx_config:
+    name: Test nginx config
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    container:
+      image: nginx:1.31.8-alpine-slim@sha256:4c734d33ee731135dc9f2349914a34551c920f4451fca8bb05bf5880eb9079e8
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Validate nginx config
+        run: |
+          cp nginx.conf /etc/nginx/conf.d/default.conf
+          nginx -t
+
+  publish:
+    name: Publish Release and Docker image
+    needs:
+      - lint_dockerfile
+      - build_dockerfile
+      - test_nginx_config
+    permissions:
+      contents: write
+      packages: write
+      issues: write
+    outputs:
+      new_release_published: ${{ steps.publish_release.outputs.new_release_published }}
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Publish Release and Docker image
+        id: publish_release
+        uses: ffflorian/actions/docker-image-release@83b8d7dce00aa38dea675be1e8174b5d46aae343
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          git_author: 'ffflorian'
+          git_email: 'git@ffflorian.de'
+
+  deploy:
+    name: Deploy latest image
+    needs: publish
+    runs-on: ubuntu-latest
+    # Only deploy when semantic-release published a new version (i.e. a fix or feat commit)
+    if: |
+      always() && (
+        github.event_name == 'workflow_dispatch' ||
+        (needs.publish.outputs.new_release_published == 'true' && github.event_name == 'push' && github.ref == 'refs/heads/main')
+      )
+    permissions:
+      deployments: write
+    steps:
+      - name: Deploy
+        uses: ffflorian/actions/coolify-deploy@83b8d7dce00aa38dea675be1e8174b5d46aae343
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          environment: production
+          domain: ${{ secrets.COOLIFY_DOMAIN }}
+          token: ${{ secrets.COOLIFY_TOKEN }}
+          uuid: ${{ secrets.COOLIFY_UUID }}
