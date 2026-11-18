@@ -1,3 +1,13 @@
+## [1.0.1](https://github.com/lenaimdahl/lenaimdahl.de/compare/v1.0.0...v1.0.1) (2026-11-18)
+
+### Bug Fixes
+
+* **deps:** bump nginx to 1.31.9 ([9a33b9f](https://github.com/lenaimdahl/lenaimdahl.de/commit/9a33b9f7741f82d314bde1693d6c9753352a7f94))
+
+### Miscellaneous Chores
+
+* Set correct email for deploymens ([8059d75](https://github.com/lenaimdahl/lenaimdahl.de/commit/8059d753f6d0fa7a0880bcc1488cf6a8dbfffe2f))
+
 ## 1.0.0 (2026-11-15)
 
 ### Features
