@@ -1,21 +1,4 @@
-@import "tailwindcss";
-
-/* Tailwind 4 ignores tailwind.config.js unless it is loaded with @config,
-   so the class-based dark mode has to be declared here. */
-@custom-variant dark (&:where(.dark, .dark *));
-
-@theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-
-  --color-ink: #1c1a1b;
-  --color-paper: #fbf8f7;
-  --color-night: #161314;
-  /* Rosa: deeper tone for text on light, softer tone on dark */
-  --color-rose: #c2416f;
-  --color-rose-light: #f39bba;
-  --color-rose-soft: #fbe3ec;
-}
+/* ---------- Fonts ---------- */
 
 @font-face {
   font-family: "Inter";
@@ -47,25 +30,419 @@
     url("./fonts/inter-v3-latin-700.woff") format("woff");
 }
 
-@layer base {
-  html {
-    background: var(--color-paper);
-    color: var(--color-ink);
-    -webkit-font-smoothing: antialiased;
-  }
+/* ---------- Tokens ---------- */
 
-  html.dark {
-    background: var(--color-night);
-    color: #ece7e9;
-  }
+:root {
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
 
-  ::selection {
-    background: var(--color-rose-light);
-    color: var(--color-ink);
-  }
+  --paper: #fbf8f7;
+  --ink: #1c1a1b;
+  --muted: #5f585b;
+  --faint: #8a8285;
+  --line: #e9e2e2;
+  --rose: #c2416f;
+  --rose-soft: #fbe3ec;
 
-  :focus-visible {
-    outline: 2px solid var(--color-rose);
-    outline-offset: 3px;
+  --width: 56rem;
+  --gutter: 1.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #161314;
+    --ink: #ece7e9;
+    --muted: #b4acaf;
+    --faint: #8c8487;
+    --line: #2d2729;
+    --rose: #f39bba;
+    --rose-soft: #3a2029;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --gutter: 2.5rem;
+  }
+}
+
+/* ---------- Base ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+figure {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--rose);
+  color: var(--paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--rose);
+  outline-offset: 3px;
+}
+
+/* ---------- Layout ---------- */
+
+.site {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--width);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 10;
+  padding: 0.5rem 1rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 0.875rem;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.site-header {
+  padding-top: 1.5rem;
+}
+
+.site-nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.site-nav a {
+  padding-block: 0.25rem;
+  border-bottom: 1px solid transparent;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+
+.site-nav a:hover,
+.site-nav a.active {
+  color: var(--rose);
+}
+
+.site-nav a.active {
+  border-bottom-color: var(--rose);
+}
+
+main {
+  flex: 1;
+}
+
+.site-footer p {
+  margin-block: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  color: var(--faint);
+  font-size: 0.75rem;
+}
+
+/* ---------- Shared pieces ---------- */
+
+.page-title {
+  margin-bottom: 1rem;
+  font-size: clamp(3rem, 8vw, 3.75rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.lead {
+  max-width: 28rem;
+  color: var(--muted);
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+
+.label {
+  color: var(--rose);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.section {
+  padding-block: 3.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.section-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .section-grid {
+    grid-template-columns: 1fr 3fr;
+  }
+}
+
+.arrow {
+  display: inline-block;
+  transition: transform 0.2s;
+}
+
+a:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* ---------- Home: hero ---------- */
+
+.hero {
+  display: grid;
+  align-items: center;
+  gap: 3rem;
+  padding-block: 4rem;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    grid-template-columns: 1.3fr 1fr;
+    padding-block: 6rem;
+  }
+}
+
+.hero-role {
+  margin-bottom: 2rem;
+  color: var(--rose);
+  font-size: clamp(1.5rem, 4vw, 1.875rem);
+}
+
+.portrait {
+  width: 100%;
+  max-width: 17rem;
+  margin-inline: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 42% center;
+  border-radius: 999px 999px 0.375rem 0.375rem;
+}
+
+.about-text {
+  font-size: clamp(1.125rem, 2.5vw, 1.25rem);
+  line-height: 1.7;
+}
+
+/* ---------- Home: work ---------- */
+
+.projects {
+  display: grid;
+  gap: 3rem;
+}
+
+.project {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .project {
+    grid-template-columns: 1.4fr 1fr;
+    align-items: center;
+    gap: 2rem;
+  }
+}
+
+.project-media {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  background: var(--rose-soft);
+}
+
+.project-media img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.5s ease;
+}
+
+.project:hover .project-media img {
+  transform: scale(1.03);
+}
+
+.project-title {
+  margin-bottom: 0.5rem;
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.project-text {
+  margin-bottom: 0.75rem;
+  color: var(--muted);
+}
+
+.project-stack {
+  margin-bottom: 1rem;
+  color: var(--faint);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+.project-link {
+  color: var(--rose);
+  font-weight: 500;
+}
+
+/* ---------- Home: contact ---------- */
+
+.contact-list li + li {
+  border-top: 1px solid var(--line);
+}
+
+.contact-list a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.75rem;
+  font-size: 1.125rem;
+  transition: color 0.2s;
+}
+
+.contact-list li:first-child a {
+  padding-top: 0;
+}
+
+.contact-list a:hover {
+  color: var(--rose);
+}
+
+.contact-handle {
+  color: var(--faint);
+  font-size: 0.875rem;
+}
+
+.contact-list a:hover .contact-handle {
+  color: var(--rose);
+}
+
+/* ---------- Blog ---------- */
+
+.blog {
+  padding-block: 4rem;
+}
+
+@media (min-width: 768px) {
+  .blog {
+    padding-block: 6rem;
+  }
+}
+
+.blog .section {
+  margin-top: 3.5rem;
+  padding-bottom: 0;
+}
+
+.blog .label {
+  margin-bottom: 2rem;
+}
+
+.post + .post {
+  border-top: 1px solid var(--line);
+}
+
+.post {
+  display: grid;
+  gap: 0.5rem;
+  padding-block: 2rem;
+}
+
+.post:first-child {
+  padding-top: 0;
+}
+
+@media (min-width: 768px) {
+  .post {
+    grid-template-columns: 10rem 1fr;
+    gap: 2rem;
+  }
+}
+
+.post time {
+  color: var(--faint);
+  font-size: 0.875rem;
+}
+
+.post h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.post-body {
+  margin-top: 0.75rem;
+}
+
+.empty {
+  color: var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
   }
 }

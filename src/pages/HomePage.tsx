@@ -1,48 +1,28 @@
 import portrait from "../img/lenaimdahl.jpg";
+import Projects from "../components/Projects";
 import SocialLinks from "../components/SocialLinks";
 
 export default function HomePage() {
   return (
-    <main
-      id="main-content"
-      className="mx-auto w-full max-w-4xl flex-1 px-6 md:px-10"
-    >
-      <section className="grid items-center gap-12 py-16 md:grid-cols-[1.3fr_1fr] md:py-24">
+    <main id="main-content" className="container">
+      <section className="hero">
         <div>
-          <h1 className="mb-4 text-5xl leading-[1] font-bold tracking-tight md:text-6xl">
-            Lena Imdahl
-          </h1>
-          <p className="mb-8 text-2xl font-light text-rose md:text-3xl dark:text-rose-light">
-            Developer &amp; Designer
-          </p>
-          <p className="max-w-md text-lg leading-relaxed font-light text-ink/75 dark:text-white/75">
+          <h1 className="page-title">Lena Imdahl</h1>
+          <p className="hero-role">Developer &amp; Designer</p>
+          <p className="lead">
             Crafting beautiful, functional interfaces and meaningful digital
             experiences.
           </p>
         </div>
-
-        <div className="mx-auto w-full max-w-[15rem] md:max-w-[17rem]">
-          <img
-            src={portrait}
-            className="aspect-[4/5] w-full rounded-t-full rounded-b-md object-cover object-[42%_center]"
-            alt="Portrait of Lena Imdahl"
-          />
-        </div>
+        <img src={portrait} className="portrait" alt="Portrait of Lena Imdahl" />
       </section>
 
-      <section
-        id="about"
-        className="scroll-mt-8 border-t border-ink/10 py-14 dark:border-white/10"
-        aria-labelledby="about-title"
-      >
-        <div className="grid gap-6 md:grid-cols-[1fr_3fr]">
-          <h2
-            id="about-title"
-            className="font-mono text-xs font-bold tracking-widest text-rose uppercase dark:text-rose-light"
-          >
+      <section id="about" className="section" aria-labelledby="about-title">
+        <div className="section-grid">
+          <h2 id="about-title" className="label">
             About
           </h2>
-          <p className="text-lg leading-relaxed font-light md:text-xl">
+          <p className="about-text">
             I'm a designer and developer passionate about crafting beautiful,
             functional interfaces. I combine a strong aesthetic eye with solid
             engineering skills to build products people love.
@@ -50,15 +30,18 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section
-        className="border-t border-ink/10 py-14 dark:border-white/10"
-        aria-labelledby="contact-title"
-      >
-        <div className="grid gap-6 md:grid-cols-[1fr_3fr]">
-          <h2
-            id="contact-title"
-            className="font-mono text-xs font-bold tracking-widest text-rose uppercase dark:text-rose-light"
-          >
+      <section id="work" className="section" aria-labelledby="work-title">
+        <div className="section-grid">
+          <h2 id="work-title" className="label">
+            Work
+          </h2>
+          <Projects />
+        </div>
+      </section>
+
+      <section className="section" aria-labelledby="contact-title">
+        <div className="section-grid">
+          <h2 id="contact-title" className="label">
             Contact
           </h2>
           <SocialLinks />

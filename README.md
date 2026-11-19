@@ -7,7 +7,7 @@ A minimal, modern portfolio website showcasing design and development work.
 - Clean, responsive design
 - Dark mode support
 - Fast and lightweight
-- Built with React, TypeScript, and Tailwind CSS
+- Built with React, TypeScript, and plain CSS
 - Optimized build pipeline with Vite
 
 ## Getting Started
@@ -84,19 +84,18 @@ docker push your-registry/lenaimdahl.de:latest
 - The portfolio is at `/` and the blog is at `/blog`.
 - Blog posts are authored in `src/pages/BlogPage.tsx`; there is no CMS or login.
 - `src/main.tsx` - React entry point
-- `src/index.css` - Tailwind CSS and custom styles
+- `src/index.css` - All styles (plain CSS with custom properties)
+- `src/components/Projects.tsx` - Work section entries
 - `src/img/` - Image assets
+- `public/work/` - Project screenshots
 - `src/fonts/` - Custom font files (Inter)
-- `tailwind.config.js` - Tailwind configuration
-- `.postcssrc.json` - PostCSS configuration
 
 ## Technologies
 
 - **React** - UI library
 - **TypeScript** - Static typing
 - **Vite** - Development server and bundler
-- **Tailwind CSS 4** - Utility-first CSS framework
-- **PostCSS** - CSS processing
+- **CSS** - Plain CSS, no framework
 - **Inter** - Font family
 - **HTML5**
 
