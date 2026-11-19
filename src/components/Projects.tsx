@@ -1,5 +1,5 @@
 import bookshelf from "../img/work/bookshelf.jpg";
-import citizenLab from "../img/work/citizen-lab.jpg";
+import citizenLab from "../img/work/barbara-citizen.png";
 import logoMotion from "../img/work/logo-motion.gif";
 
 interface Project {
@@ -17,29 +17,8 @@ interface Project {
 
 const ATELIER = "https://atelier.lenaimdahl.de";
 
+// Newest first
 const projects: Project[] = [
-  {
-    title: "Bookshelf",
-    description:
-      "A shared shelf where visitors pick their favourite from a library of 100 feminist books.",
-    stack: "React · TypeScript · Go · PostgreSQL · Open Library API",
-    href: `${ATELIER}/books`,
-    image: bookshelf,
-    imageAlt:
-      "Screenshot of the shared shelf showing favourite books and how often each was picked",
-    position: "top",
-  },
-  {
-    title: "40C3 Citizen Lab",
-    description:
-      "Build your own model citizen for 40C3: pick a face, colours and decorations, then share it as a link or download it as SVG.",
-    stack: "React · TypeScript · SVG · Vitest",
-    href: `${ATELIER}/citizen-lab`,
-    image: citizenLab,
-    imageAlt:
-      "A colourful model citizen with a cap and big round eyes, built in the Citizen Lab",
-    position: "center 55%",
-  },
   {
     title: "40C3 Logo Motion",
     description:
@@ -50,6 +29,28 @@ const projects: Project[] = [
     imageAlt:
       "Animated 40C3 logo glitching out of signal noise into the words Model Citizens",
     fit: "contain",
+  },
+  {
+    title: "40C3 Citizen Lab",
+    description:
+      "Build your own model citizen for 40C3: pick a face, colours and decorations, then share it as a link or download it as SVG.",
+    stack: "React · TypeScript · SVG · Vitest",
+    href: `${ATELIER}/citizen-lab`,
+    image: citizenLab,
+    imageAlt:
+      "A model citizen built in the Citizen Lab: lilac face, teal hair, pointed ears and earrings",
+    fit: "contain",
+  },
+  {
+    title: "Bookshelf",
+    description:
+      "A shared shelf where visitors pick their favourite from a library of 100 feminist books.",
+    stack: "React · TypeScript · Go · PostgreSQL · Open Library API",
+    href: `${ATELIER}/books`,
+    image: bookshelf,
+    imageAlt:
+      "Screenshot of the shared shelf showing favourite books and how often each was picked",
+    position: "top",
   },
 ];
 
