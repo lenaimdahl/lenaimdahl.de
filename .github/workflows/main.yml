@@ -28,6 +28,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Check formatting
+        run: npm run format:check
+
+      - name: Lint
+        run: npm run lint
+
       - name: Build
         run: npm run build
 
@@ -72,7 +78,8 @@ jobs:
       contents: read
     runs-on: ubuntu-latest
     container:
-      image: nginx:1.31.8-alpine-slim@sha256:4c734d33ee731135dc9f2349914a34551c920f4451fca8bb05bf5880eb9079e8
+      # Keep in sync with the nginx image in the Dockerfile
+      image: nginx:1.31.9-alpine-slim@sha256:0b98e1db810be4f78a699dd2a98fa1c52b12a71e91872a00a2537b9a8b502be9
     if: github.event_name == 'push' || github.event_name == 'pull_request'
     steps:
       - name: Checkout
@@ -106,16 +113,18 @@ jobs:
         uses: ffflorian/actions/docker-image-release@83b8d7dce00aa38dea675be1e8174b5d46aae343
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          git_author: 'lenaimdahl'
-          git_email: 'mail@lenaimdahl.de'
+          git_author: "lenaimdahl"
+          git_email: "mail@lenaimdahl.de"
 
   deploy:
     name: Deploy latest image
-    needs: publish
+    needs:
+      - build
+      - publish
     runs-on: ubuntu-latest
     # Only deploy when semantic-release published a new version (i.e. a fix or feat commit)
     if: |
-      always() && (
+      always() && needs.build.result == 'success' && (
         github.event_name == 'workflow_dispatch' ||
         (needs.publish.outputs.new_release_published == 'true' && github.event_name == 'push' && github.ref == 'refs/heads/main')
       )

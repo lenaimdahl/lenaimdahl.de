@@ -1,0 +1,17 @@
+{
+  "logoMotion": {
+    "title": "40C3 Logo Motion",
+    "description": "I'm playing around with the 40C3 logo and trying to make it move with code: typing, glitches, flipping digits and color waves. Some of it works, some of it is not quite there yet.",
+    "imageAlt": "A green cursor types MODEL_ CITIZENS, then the picture breaks up into shifted stripes and colors and the 40C3 logo takes its place."
+  },
+  "citizenLab": {
+    "title": "40C3 Citizen Lab",
+    "description": "Somewhere between model citizen and delightful outlier. Build your own citizen for 40C3, then share it as a link or download it as SVG.",
+    "imageAlt": "A citizen from the Citizen Lab: lilac face, teal hair, pointed ears and earrings"
+  },
+  "bookshelf": {
+    "title": "Bookshelf",
+    "description": "Pick a book from my library of 100 feminist books and put it on the shared shelf.",
+    "imageAlt": "The shared shelf with favorite books and how often each was picked"
+  }
+}
