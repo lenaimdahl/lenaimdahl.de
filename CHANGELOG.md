@@ -1,3 +1,9 @@
+## [1.1.0](https://github.com/[secure]/[secure].de/compare/v1.0.1...v1.1.0) (2026-11-19)
+
+### Features
+
+* migrate portfolio to React and add blog route ([#21](https://github.com/[secure]/[secure].de/issues/21)) ([754269b](https://github.com/[secure]/[secure].de/commit/754269ba7036809d4e534bb71d47e1340b852e5a))
+
 ## [1.0.1](https://github.com/[secure]/[secure].de/compare/v1.0.0...v1.0.1) (2026-11-18)
 
 ### Bug Fixes
