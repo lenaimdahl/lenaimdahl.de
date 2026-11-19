@@ -1,3 +1,5 @@
+import { useLanguage } from "../i18n/LanguageContext";
+
 const links = [
   {
     label: "LinkedIn",
@@ -12,7 +14,7 @@ const links = [
     external: true,
   },
   {
-    label: "Email",
+    label: "email",
     handle: "hello@lenaimdahl.de",
     href: "mailto:hello@lenaimdahl.de",
     external: false,
@@ -20,6 +22,8 @@ const links = [
 ];
 
 export default function SocialLinks() {
+  const { t } = useLanguage();
+
   return (
     <ul className="contact-list">
       {links.map((link) => (
@@ -30,7 +34,7 @@ export default function SocialLinks() {
               ? { target: "_blank", rel: "noopener noreferrer" }
               : {})}
           >
-            <span>{link.label}</span>
+            <span>{link.label === "email" ? t.home.email : link.label}</span>
             <span className="contact-handle">
               {link.handle}{" "}
               <span aria-hidden="true" className="arrow">

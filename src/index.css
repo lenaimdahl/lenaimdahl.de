@@ -160,6 +160,7 @@ a {
 .site-nav {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   gap: 1.5rem;
   padding-bottom: 0.75rem;
   border-bottom: 1px solid var(--line);
@@ -183,6 +184,26 @@ a {
 
 .site-nav a.active {
   border-bottom-color: var(--rose);
+}
+
+.language-button {
+  margin-left: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--rose);
+  border-radius: 0.25rem;
+  background: transparent;
+  color: var(--rose);
+  font: inherit;
+  letter-spacing: inherit;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+.language-button:hover {
+  background: var(--rose);
+  color: var(--paper);
 }
 
 main {

@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { useLanguage } from "../i18n/LanguageContext";
 
 interface BlogPost {
   date: string;
@@ -10,16 +11,16 @@ interface BlogPost {
 const posts: BlogPost[] = [];
 
 export default function BlogPage() {
+  const { t } = useLanguage();
+
   return (
     <main id="main-content" className="blog container">
-      <h1 className="page-title">Blog</h1>
-      <p className="lead">
-        Notes on design, development, and the things I'm learning.
-      </p>
+      <h1 className="page-title">{t.blog.title}</h1>
+      <p className="lead">{t.blog.lead}</p>
 
       <section className="section" aria-labelledby="latest-posts-title">
         <h2 id="latest-posts-title" className="label">
-          Latest posts
+          {t.blog.latest}
         </h2>
         {posts.length > 0 ? (
           <ol>
@@ -34,7 +35,7 @@ export default function BlogPage() {
             ))}
           </ol>
         ) : (
-          <p className="empty">No posts yet.</p>
+          <p className="empty">{t.blog.empty}</p>
         )}
       </section>
     </main>
