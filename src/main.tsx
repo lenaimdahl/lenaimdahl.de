@@ -3,9 +3,12 @@ import { createRoot } from "react-dom/client";
 import Router from "./routes/Router";
 import "./index.css";
 
-if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-  document.documentElement.classList.add("dark");
-}
+const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
+const applyTheme = () =>
+  document.documentElement.classList.toggle("dark", darkQuery.matches);
+
+applyTheme();
+darkQuery.addEventListener("change", applyTheme);
 
 const rootElement = document.getElementById("root");
 

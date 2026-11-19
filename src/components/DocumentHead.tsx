@@ -51,7 +51,7 @@ function setFavicon() {
   }
 
   favicon.href =
-    "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>👋</text></svg>";
+    "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23c2416f'/><text x='50' y='68' text-anchor='middle' font-family='monospace' font-weight='700' font-size='50' fill='white'>LI</text></svg>";
 }
 
 export default function DocumentHead({ page }: { page: Page }) {
