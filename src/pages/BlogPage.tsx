@@ -16,6 +16,7 @@ export default function BlogPage() {
   return (
     <main id="main-content" className="blog container">
       <h1 className="page-title">{t.blog.title}</h1>
+      <p className="page-subtitle">{t.blog.subtitle}</p>
       <p className="lead">{t.blog.lead}</p>
 
       <section className="section" aria-labelledby="latest-posts-title">
