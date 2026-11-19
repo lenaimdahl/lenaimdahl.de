@@ -8,7 +8,6 @@ RUN npm ci
 
 COPY index.html vite.config.mts tsconfig.json ./
 COPY src/ src/
-COPY public/ public/
 RUN npm run build
 
 # Serve
