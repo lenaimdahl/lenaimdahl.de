@@ -285,7 +285,8 @@ a:hover .arrow {
   }
 }
 
-.hero-role {
+.hero-role,
+.page-subtitle {
   margin-bottom: 1.5rem;
   color: var(--rose);
   font-size: clamp(1.5rem, 4vw, 1.875rem);
