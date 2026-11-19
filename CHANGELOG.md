@@ -1,3 +1,9 @@
+## [1.1.0](https://github.com/lenaimdahl/lenaimdahl.de/compare/v1.0.1...v1.1.0) (2026-11-19)
+
+### Features
+
+* migrate portfolio to React and add blog route ([#21](https://github.com/lenaimdahl/lenaimdahl.de/issues/21)) ([c95c603](https://github.com/lenaimdahl/lenaimdahl.de/commit/c95c603f3e497ef4821307e1c9a25a856175a9e3))
+
 ## [1.0.1](https://github.com/lenaimdahl/lenaimdahl.de/compare/v1.0.0...v1.0.1) (2026-11-18)
 
 ### Bug Fixes
