@@ -1,7 +1,7 @@
 import bookshelf from "../img/work/bookshelf.jpg";
 import citizenLab from "../img/work/barbara-citizen.png";
 import logoMotion from "../img/work/logo-motion.gif";
-import { useLanguage } from "../i18n/LanguageContext";
+import { useLanguage } from "../i18n/useLanguage";
 import type { Translation } from "../i18n/translations";
 
 interface Project {

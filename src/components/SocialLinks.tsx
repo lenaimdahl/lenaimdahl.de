@@ -1,6 +1,14 @@
-import { useLanguage } from "../i18n/LanguageContext";
+import { useLanguage } from "../i18n/useLanguage";
+import type { Translation } from "../i18n/translations";
 
-const links = [
+interface SocialLink {
+  label: string | ((t: Translation) => string);
+  handle: string;
+  href: string;
+  external: boolean;
+}
+
+const links: SocialLink[] = [
   {
     label: "LinkedIn",
     handle: "in/lenaimdahl",
@@ -14,7 +22,7 @@ const links = [
     external: true,
   },
   {
-    label: "email",
+    label: (t) => t.home.email,
     handle: "hello@lenaimdahl.de",
     href: "mailto:hello@lenaimdahl.de",
     external: false,
@@ -27,14 +35,16 @@ export default function SocialLinks() {
   return (
     <ul className="contact-list">
       {links.map((link) => (
-        <li key={link.label}>
+        <li key={link.href}>
           <a
             href={link.href}
             {...(link.external
               ? { target: "_blank", rel: "noopener noreferrer" }
               : {})}
           >
-            <span>{link.label === "email" ? t.home.email : link.label}</span>
+            <span>
+              {typeof link.label === "function" ? link.label(t) : link.label}
+            </span>
             <span className="contact-handle">
               {link.handle}{" "}
               <span aria-hidden="true" className="arrow">

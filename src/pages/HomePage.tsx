@@ -1,7 +1,7 @@
 import portrait from "../img/lenaimdahl.jpg";
 import Projects from "../components/Projects";
 import SocialLinks from "../components/SocialLinks";
-import { useLanguage } from "../i18n/LanguageContext";
+import { useLanguage } from "../i18n/useLanguage";
 
 export default function HomePage() {
   const { t } = useLanguage();

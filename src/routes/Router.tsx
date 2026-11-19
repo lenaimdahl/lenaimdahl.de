@@ -1,18 +1,23 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SiteLayout from "../components/SiteLayout";
+import { LanguageProvider } from "../i18n/LanguageProvider";
 import BlogPage from "../pages/BlogPage";
 import HomePage from "../pages/HomePage";
+import NotFoundPage from "../pages/NotFoundPage";
 import { PATHS } from "./paths";
 
 export default function Router() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route element={<SiteLayout />}>
-          <Route path={PATHS.HOME} element={<HomePage />} />
-          <Route path={PATHS.BLOG} element={<BlogPage />} />
-        </Route>
-      </Routes>
+      <LanguageProvider>
+        <Routes>
+          <Route element={<SiteLayout />}>
+            <Route path={PATHS.HOME} element={<HomePage />} />
+            <Route path={PATHS.BLOG} element={<BlogPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
+        </Routes>
+      </LanguageProvider>
     </BrowserRouter>
   );
 }

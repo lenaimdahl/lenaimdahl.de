@@ -1,20 +1,27 @@
 import { useEffect } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
-import DocumentHead from "./DocumentHead";
+import DocumentHead, { type Page } from "./DocumentHead";
 import LanguageSwitcher from "./LanguageSwitcher";
-import { useLanguage } from "../i18n/LanguageContext";
+import { useLanguage } from "../i18n/useLanguage";
 import { PATHS } from "../routes/paths";
+
+const YEAR = new Date().getFullYear();
 
 export default function SiteLayout() {
   const { pathname, hash } = useLocation();
   const { t } = useLanguage();
-  const page = pathname.startsWith(PATHS.BLOG) ? "blog" : "home";
+  const page: Page =
+    pathname === PATHS.HOME
+      ? "home"
+      : pathname === PATHS.BLOG
+        ? "blog"
+        : "notFound";
 
   useEffect(() => {
     if (hash) {
       document.getElementById(hash.slice(1))?.scrollIntoView();
     }
-  }, [hash, pathname]);
+  }, [hash]);
 
   return (
     <div className="site">
@@ -38,7 +45,7 @@ export default function SiteLayout() {
       <Outlet />
 
       <footer className="site-footer container">
-        <p>© {new Date().getFullYear()} Lena Imdahl</p>
+        <p>© {YEAR} Lena Imdahl</p>
       </footer>
     </div>
   );
