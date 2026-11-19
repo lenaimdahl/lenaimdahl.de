@@ -1,6 +1,5 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { LanguageProvider } from "./i18n/LanguageContext";
 import Router from "./routes/Router";
 import "./index.css";
 
@@ -12,8 +11,6 @@ if (!rootElement) {
 
 createRoot(rootElement).render(
   <StrictMode>
-    <LanguageProvider>
-      <Router />
-    </LanguageProvider>
+    <Router />
   </StrictMode>,
 );

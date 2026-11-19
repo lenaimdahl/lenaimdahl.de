@@ -298,7 +298,7 @@ a:hover .arrow {
   margin-inline: auto;
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  object-position: 42% center;
+  object-position: center top;
   border-radius: 999px 999px 0.375rem 0.375rem;
 }
 
@@ -471,6 +471,14 @@ a:hover .arrow {
 
 .empty {
   color: var(--muted);
+}
+
+.not-found-link {
+  margin-top: 2rem;
+}
+
+a:hover .arrow--back {
+  transform: translateX(-4px);
 }
 
 @media (prefers-reduced-motion: reduce) {

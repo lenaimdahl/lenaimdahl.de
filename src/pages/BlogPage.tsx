@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { useLanguage } from "../i18n/LanguageContext";
+import { useLanguage } from "../i18n/useLanguage";
 
 interface BlogPost {
   date: string;
