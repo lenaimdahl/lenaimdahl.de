@@ -2,18 +2,27 @@
   "author": "Lena Imdahl <mail@lenaimdahl.de>",
   "devDependencies": {
     "@tailwindcss/postcss": "4.3.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.3.0",
     "autoprefixer": "10.6.2",
-    "parcel": "2.16.4",
     "postcss": "8.5.32",
-    "tailwindcss": "4.3.5"
+    "tailwindcss": "4.3.5",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.8"
   },
   "license": "GPL-3.0",
   "name": "lenaimdahl.de",
   "repository": "git@github.com:lenaimdahl/lenaimdahl.de.git",
   "scripts": {
-    "build": "parcel build src/index.html",
-    "dev": "parcel src/index.html",
+    "build": "tsc --noEmit && vite build",
+    "dev": "vite",
     "dist": "rm -rf dist && npm run build"
   },
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "dependencies": {
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.6"
+  }
 }
