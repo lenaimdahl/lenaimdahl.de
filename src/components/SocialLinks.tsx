@@ -21,7 +21,7 @@ const links = [
 
 export default function SocialLinks() {
   return (
-    <ul className="divide-y divide-ink/10 dark:divide-white/10">
+    <ul className="contact-list">
       {links.map((link) => (
         <li key={link.label}>
           <a
@@ -29,15 +29,11 @@ export default function SocialLinks() {
             {...(link.external
               ? { target: "_blank", rel: "noopener noreferrer" }
               : {})}
-            className="group flex items-baseline justify-between gap-4 py-3 first:pt-0 transition-colors hover:text-rose dark:hover:text-rose-light"
           >
-            <span className="text-lg">{link.label}</span>
-            <span className="text-sm text-ink/50 transition-colors group-hover:text-rose dark:text-white/50 dark:group-hover:text-rose-light">
+            <span>{link.label}</span>
+            <span className="contact-handle">
               {link.handle}{" "}
-              <span
-                aria-hidden="true"
-                className="inline-block transition-transform group-hover:translate-x-1"
-              >
+              <span aria-hidden="true" className="arrow">
                 →
               </span>
             </span>
