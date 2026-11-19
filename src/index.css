@@ -1,35 +1,71 @@
 @import "tailwindcss";
 
+/* Tailwind 4 ignores tailwind.config.js unless it is loaded with @config,
+   so the class-based dark mode has to be declared here. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --color-ink: #1c1a1b;
+  --color-paper: #fbf8f7;
+  --color-night: #161314;
+  /* Rosa: deeper tone for text on light, softer tone on dark */
+  --color-rose: #c2416f;
+  --color-rose-light: #f39bba;
+  --color-rose-soft: #fbe3ec;
+}
+
 @font-face {
   font-family: "Inter";
   font-style: normal;
   font-weight: 300;
+  font-display: swap;
   src:
     url("./fonts/inter-v3-latin-300.woff2") format("woff2"),
-    url("./fonts/inter-v3-latin-300.woff") format("woff"),
-    url("./fonts/inter-v3-latin-300.ttf") format("truetype");
+    url("./fonts/inter-v3-latin-300.woff") format("woff");
 }
 
 @font-face {
   font-family: "Inter";
   font-style: normal;
   font-weight: 500;
+  font-display: swap;
   src:
     url("./fonts/inter-v3-latin-500.woff2") format("woff2"),
-    url("./fonts/inter-v3-latin-500.woff") format("woff"),
-    url("./fonts/inter-v3-latin-500.ttf") format("truetype");
+    url("./fonts/inter-v3-latin-500.woff") format("woff");
 }
 
 @font-face {
   font-family: "Inter";
   font-style: normal;
   font-weight: 700;
+  font-display: swap;
   src:
     url("./fonts/inter-v3-latin-700.woff2") format("woff2"),
-    url("./fonts/inter-v3-latin-700.woff") format("woff"),
-    url("./fonts/inter-v3-latin-700.ttf") format("truetype");
+    url("./fonts/inter-v3-latin-700.woff") format("woff");
 }
 
-body {
-  font-family: "Inter", sans-serif;
+@layer base {
+  html {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  html.dark {
+    background: var(--color-night);
+    color: #ece7e9;
+  }
+
+  ::selection {
+    background: var(--color-rose-light);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-rose);
+    outline-offset: 3px;
+  }
 }

@@ -1,7 +1,15 @@
 import { useEffect } from "react";
-import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
 import DocumentHead from "./DocumentHead";
 import { PATHS } from "../routes/paths";
+
+const navLinkClass = ({ isActive }: { isActive: boolean }) =>
+  [
+    "border-b py-1 transition-colors",
+    isActive
+      ? "border-rose text-rose dark:border-rose-light dark:text-rose-light"
+      : "border-transparent hover:text-rose dark:hover:text-rose-light",
+  ].join(" ");
 
 export default function SiteLayout() {
   const { pathname, hash } = useLocation();
@@ -14,33 +22,25 @@ export default function SiteLayout() {
   }, [hash, pathname]);
 
   return (
-    <div className="flex min-h-screen flex-col transition-colors duration-500 dark:bg-gray-900 dark:text-gray-100">
+    <div className="flex min-h-screen flex-col font-sans">
       <DocumentHead page={page} />
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-10 focus:bg-white focus:px-4 focus:py-2 focus:text-gray-900"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-10 focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:text-paper"
       >
         Skip to content
       </a>
 
-      <header className="mx-4 border-b border-gray-200 px-4 py-4 dark:border-gray-700 md:mx-12 lg:mx-24">
+      <header className="mx-auto w-full max-w-4xl px-6 pt-6 md:px-10">
         <nav
           aria-label="Main navigation"
-          className="flex items-center justify-between gap-6"
+          className="flex justify-end border-b border-ink/10 pb-4 dark:border-white/10"
         >
-          <NavLink
-            to={PATHS.HOME}
-            end
-            className="font-semibold transition-colors hover:text-red-500"
-          >
-            Lena Imdahl
-          </NavLink>
-          <div className="flex gap-4 text-sm text-gray-600 dark:text-gray-300">
-            <NavLink
-              to={PATHS.BLOG}
-              end
-              className="transition-colors hover:text-red-500"
-            >
+          <div className="flex gap-6 font-mono text-xs tracking-widest text-ink/60 uppercase dark:text-white/60">
+            <NavLink to={PATHS.HOME} end className={navLinkClass}>
+              Home
+            </NavLink>
+            <NavLink to={PATHS.BLOG} end className={navLinkClass}>
               Blog
             </NavLink>
           </div>
@@ -49,29 +49,9 @@ export default function SiteLayout() {
 
       <Outlet />
 
-      <footer className="w-full p-4 text-center text-xs text-gray-400">
-        <p>
-          {page !== "home" ? (
-            <Link
-              to={PATHS.HOME}
-              className="underline hover:text-blue-800 dark:hover:text-blue-300"
-            >
-              Back to Lena's portfolio
-            </Link>
-          ) : (
-            <>
-              Based on{" "}
-              <a
-                href="https://github.com/apvarun/showfolio-hugo-theme"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline hover:text-blue-800 dark:hover:text-blue-300"
-              >
-                Showfolio
-              </a>
-            </>
-          )}{" "}
-          · Copyright &copy; Lena Imdahl
+      <footer className="mx-auto w-full max-w-4xl px-6 py-8 md:px-10">
+        <p className="border-t border-ink/10 pt-4 text-xs text-ink/50 dark:border-white/10 dark:text-white/50">
+          © {new Date().getFullYear()} Lena Imdahl
         </p>
       </footer>
     </div>
