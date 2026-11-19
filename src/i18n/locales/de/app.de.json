@@ -1,0 +1,15 @@
+{
+  "meta": {
+    "homeTitle": "Lena Imdahl – Portfolio",
+    "homeDescription": "Ich gestalte und baue Dinge fürs Web, von der ersten Idee bis zum Deployment.",
+    "blogTitle": "Blog | Lena Imdahl",
+    "blogDescription": "Notizen zu Design, Code und dem, was ich gerade lerne."
+  },
+  "nav": {
+    "label": "Hauptnavigation",
+    "home": "Start",
+    "blog": "Blog",
+    "skip": "Zum Inhalt springen",
+    "switchLanguage": "Switch to English"
+  }
+}

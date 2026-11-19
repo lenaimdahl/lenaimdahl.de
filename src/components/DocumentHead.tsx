@@ -1,27 +1,22 @@
 import { useEffect } from "react";
+import { useLanguage } from "../i18n/LanguageContext";
+import type { Translation } from "../i18n/translations";
 
 type Page = "home" | "blog";
 
-const PAGE_META: Record<
-  Page,
-  {
-    title: string;
-    description: string;
-    url: string;
-  }
-> = {
-  home: {
-    title: "Lena Imdahl - Portfolio",
-    description:
-      "Crafting beautiful, functional interfaces and meaningful digital experiences.",
-    url: "https://lenaimdahl.de/",
-  },
-  blog: {
-    title: "Blog | Lena Imdahl",
-    description: "Notes on design, development, and the things I'm learning.",
-    url: "https://lenaimdahl.de/blog",
-  },
-};
+function getPageMeta(page: Page, t: Translation) {
+  return page === "home"
+    ? {
+        title: t.meta.homeTitle,
+        description: t.meta.homeDescription,
+        url: "https://lenaimdahl.de/",
+      }
+    : {
+        title: t.meta.blogTitle,
+        description: t.meta.blogDescription,
+        url: "https://lenaimdahl.de/blog",
+      };
+}
 
 function setMeta(
   attribute: "name" | "property",
@@ -55,8 +50,10 @@ function setFavicon() {
 }
 
 export default function DocumentHead({ page }: { page: Page }) {
+  const { t } = useLanguage();
+
   useEffect(() => {
-    const meta = PAGE_META[page];
+    const meta = getPageMeta(page, t);
     document.title = meta.title;
     setMeta("name", "description", meta.description);
     setMeta("name", "author", "Lena Imdahl");
@@ -73,7 +70,7 @@ export default function DocumentHead({ page }: { page: Page }) {
     setMeta("property", "og:image:height", "630");
     setMeta("property", "og:site_name", "Lena Imdahl");
     setFavicon();
-  }, [page]);
+  }, [page, t]);
 
   return null;
 }
