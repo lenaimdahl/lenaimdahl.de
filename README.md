@@ -7,14 +7,14 @@ A minimal, modern portfolio website showcasing design and development work.
 - Clean, responsive design
 - Dark mode support
 - Fast and lightweight
-- Built with HTML, CSS (Tailwind), and vanilla JavaScript
-- Optimized build pipeline with Parcel
+- Built with React, TypeScript, and Tailwind CSS
+- Optimized build pipeline with Vite
 
 ## Getting Started
 
 ### Requirements
 
-- [Node.js](https://nodejs.org) (>= 16)
+- [Node.js](https://nodejs.org) (>= 20)
 
 ### Installation
 
@@ -32,7 +32,7 @@ Start the development server with hot reload:
 npm run dev
 ```
 
-The site will be available at `http://localhost:1234` with automatic page reloading on file changes.
+The site will be available at `http://localhost:5173` with automatic page reloading on file changes.
 
 ## Production Build
 
@@ -77,7 +77,13 @@ docker push your-registry/lenaimdahl.de:latest
 
 ## Structure
 
-- `src/index.html` - Main portfolio page
+- `index.html` - Vite's minimal HTML entry point
+- `src/pages/` - React page components
+- `src/components/` - Shared React components
+- `src/routes/` - React Router routes and paths
+- The portfolio is at `/` and the blog is at `/blog`.
+- Blog posts are authored in `src/pages/BlogPage.tsx`; there is no CMS or login.
+- `src/main.tsx` - React entry point
 - `src/index.css` - Tailwind CSS and custom styles
 - `src/img/` - Image assets
 - `src/fonts/` - Custom font files (Inter)
@@ -86,7 +92,9 @@ docker push your-registry/lenaimdahl.de:latest
 
 ## Technologies
 
-- **Parcel** - Zero-config bundler
+- **React** - UI library
+- **TypeScript** - Static typing
+- **Vite** - Development server and bundler
 - **Tailwind CSS 4** - Utility-first CSS framework
 - **PostCSS** - CSS processing
 - **Inter** - Font family
