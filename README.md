@@ -86,8 +86,7 @@ docker push your-registry/lenaimdahl.de:latest
 - `src/main.tsx` - React entry point
 - `src/index.css` - All styles (plain CSS with custom properties)
 - `src/components/Projects.tsx` - Work section entries
-- `src/img/` - Image assets
-- `public/work/` - Project screenshots
+- `src/img/` - Image assets (`src/img/work/` holds the project screenshots)
 - `src/fonts/` - Custom font files (Inter)
 
 ## Technologies

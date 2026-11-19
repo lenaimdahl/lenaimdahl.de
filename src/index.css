@@ -314,10 +314,20 @@ a:hover .arrow {
 
 .project-media img {
   width: 100%;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
   object-position: top;
   transition: transform 0.5s ease;
+}
+
+/* Animations are shown whole on the 40C3 background colour */
+.project-media--contain {
+  background: #001300;
+}
+
+.project-media--contain img {
+  object-fit: contain;
+  object-position: center;
 }
 
 .project:hover .project-media img {

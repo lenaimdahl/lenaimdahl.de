@@ -1,3 +1,5 @@
+import bookshelf from "../img/work/bookshelf.jpg";
+import citizenLab from "../img/work/citizen-lab.jpg";
 import logoMotion from "../img/work/logo-motion.gif";
 
 interface Project {
@@ -7,11 +9,14 @@ interface Project {
   href: string;
   image: string;
   imageAlt: string;
+  /** "contain" shows the whole image (e.g. animations) instead of cropping it */
+  fit?: "cover" | "contain";
+  /** CSS object-position for cropped images */
+  position?: string;
 }
 
 const ATELIER = "https://atelier.lenaimdahl.de";
 
-// Screenshots live in public/work/ so they can be swapped without a code change.
 const projects: Project[] = [
   {
     title: "Bookshelf",
@@ -19,8 +24,10 @@ const projects: Project[] = [
       "A shared shelf where visitors pick their favourite from a library of 100 feminist books.",
     stack: "React · TypeScript · Go · PostgreSQL · Open Library API",
     href: `${ATELIER}/books`,
-    image: "/work/bookshelf.png",
-    imageAlt: "Screenshot of the Bookshelf project",
+    image: bookshelf,
+    imageAlt:
+      "Screenshot of the shared shelf showing favourite books and how often each was picked",
+    position: "top",
   },
   {
     title: "40C3 Citizen Lab",
@@ -28,8 +35,10 @@ const projects: Project[] = [
       "Build your own model citizen for 40C3: pick a face, colours and decorations, then share it as a link or download it as SVG.",
     stack: "React · TypeScript · SVG · Vitest",
     href: `${ATELIER}/citizen-lab`,
-    image: "/work/citizen-lab.png",
-    imageAlt: "Screenshot of the 40C3 Citizen Lab",
+    image: citizenLab,
+    imageAlt:
+      "A colourful model citizen with a cap and big round eyes, built in the Citizen Lab",
+    position: "center 55%",
   },
   {
     title: "40C3 Logo Motion",
@@ -38,7 +47,9 @@ const projects: Project[] = [
     stack: "p5.js · TypeScript",
     href: `${ATELIER}/logo-motion`,
     image: logoMotion,
-    imageAlt: "Animated 40C3 logo made of coloured LED dots",
+    imageAlt:
+      "Animated 40C3 logo glitching out of signal noise into the words Model Citizens",
+    fit: "contain",
   },
 ];
 
@@ -53,11 +64,22 @@ export default function Projects() {
             rel="noopener noreferrer"
             className="project"
           >
-            <div className="project-media">
+            <div
+              className={
+                project.fit === "contain"
+                  ? "project-media project-media--contain"
+                  : "project-media"
+              }
+            >
               <img
                 src={project.image}
                 alt={project.imageAlt}
                 loading="lazy"
+                style={
+                  project.position
+                    ? { objectPosition: project.position }
+                    : undefined
+                }
               />
             </div>
             <div>
