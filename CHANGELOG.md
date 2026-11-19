@@ -1,18 +1,18 @@
-## [1.1.0](https://github.com/[secure]/[secure].de/compare/v1.0.1...v1.1.0) (2026-11-19)
+## [1.1.0](https://github.com/lenaimdahl/lenaimdahl.de/compare/v1.0.1...v1.1.0) (2026-11-19)
 
 ### Features
 
-* migrate portfolio to React and add blog route ([#21](https://github.com/[secure]/[secure].de/issues/21)) ([754269b](https://github.com/[secure]/[secure].de/commit/754269ba7036809d4e534bb71d47e1340b852e5a))
+* migrate portfolio to React and add blog route ([#21](https://github.com/lenaimdahl/lenaimdahl.de/issues/21)) ([754269b](https://github.com/lenaimdahl/lenaimdahl.de/commit/754269ba7036809d4e534bb71d47e1340b852e5a))
 
-## [1.0.1](https://github.com/[secure]/[secure].de/compare/v1.0.0...v1.0.1) (2026-11-18)
+## [1.0.1](https://github.com/lenaimdahl/lenaimdahl.de/compare/v1.0.0...v1.0.1) (2026-11-18)
 
 ### Bug Fixes
 
-* **deps:** bump nginx to 1.31.9 ([c71f89a](https://github.com/[secure]/[secure].de/commit/c71f89afed7b75c4753f7a86f6fa3b31c69a13b5))
+* **deps:** bump nginx to 1.31.9 ([c71f89a](https://github.com/lenaimdahl/lenaimdahl.de/commit/c71f89afed7b75c4753f7a86f6fa3b31c69a13b5))
 
 ### Miscellaneous Chores
 
-* Set correct email for deploymens ([dbaecfb](https://github.com/[secure]/[secure].de/commit/dbaecfb1717e22fa17080ea9598cf4939b2bd8a5))
+* Set correct email for deploymens ([dbaecfb](https://github.com/lenaimdahl/lenaimdahl.de/commit/dbaecfb1717e22fa17080ea9598cf4939b2bd8a5))
 
 ## 1.0.0 (2026-11-15)
 

@@ -1,0 +1,28 @@
+{
+  "meta": {
+    "home": {
+      "title": "Lena Imdahl – Portfolio",
+      "description": "I design and build things for the web, from the first idea to deployment."
+    },
+    "blog": {
+      "title": "One more chromosome | Lena Imdahl",
+      "description": "Notes on our family life with disability: books that helped us, school, siblings, hard days and good days."
+    },
+    "notFound": {
+      "title": "Page not found | Lena Imdahl",
+      "description": "This page doesn't exist."
+    }
+  },
+  "nav": {
+    "label": "Main navigation",
+    "home": "Home",
+    "blog": "Blog",
+    "skip": "Skip to content",
+    "switchLanguage": "Auf Deutsch wechseln"
+  },
+  "notFound": {
+    "title": "Nothing here.",
+    "text": "This page doesn't exist, or not anymore.",
+    "back": "Back to the start page"
+  }
+}

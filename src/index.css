@@ -1,35 +1,488 @@
-@import "tailwindcss";
+/* ---------- Fonts ---------- */
 
 @font-face {
   font-family: "Inter";
   font-style: normal;
   font-weight: 300;
+  font-display: swap;
   src:
     url("./fonts/inter-v3-latin-300.woff2") format("woff2"),
-    url("./fonts/inter-v3-latin-300.woff") format("woff"),
-    url("./fonts/inter-v3-latin-300.ttf") format("truetype");
+    url("./fonts/inter-v3-latin-300.woff") format("woff");
 }
 
 @font-face {
   font-family: "Inter";
   font-style: normal;
   font-weight: 500;
+  font-display: swap;
   src:
     url("./fonts/inter-v3-latin-500.woff2") format("woff2"),
-    url("./fonts/inter-v3-latin-500.woff") format("woff"),
-    url("./fonts/inter-v3-latin-500.ttf") format("truetype");
+    url("./fonts/inter-v3-latin-500.woff") format("woff");
 }
 
 @font-face {
   font-family: "Inter";
   font-style: normal;
   font-weight: 700;
+  font-display: swap;
   src:
     url("./fonts/inter-v3-latin-700.woff2") format("woff2"),
-    url("./fonts/inter-v3-latin-700.woff") format("woff"),
-    url("./fonts/inter-v3-latin-700.ttf") format("truetype");
+    url("./fonts/inter-v3-latin-700.woff") format("woff");
+}
+
+/* ---------- Tokens ---------- */
+
+:root {
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --paper: #fbf8f7;
+  --ink: #1c1a1b;
+  --muted: #5f585b;
+  --faint: #8a8285;
+  --line: #e9e2e2;
+  --rose: #c2416f;
+  --rose-soft: #fbe3ec;
+
+  --width: 56rem;
+  --gutter: 1.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #161314;
+    --ink: #ece7e9;
+    --muted: #b4acaf;
+    --faint: #8c8487;
+    --line: #2d2729;
+    --rose: #f39bba;
+    --rose-soft: #3a2029;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --gutter: 2.5rem;
+  }
+}
+
+/* ---------- Base ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+figure {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--rose);
+  color: var(--paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--rose);
+  outline-offset: 3px;
+}
+
+/* ---------- Layout ---------- */
+
+.site {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--width);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 10;
+  padding: 0.5rem 1rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 0.875rem;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.site-header {
+  padding-top: 1.25rem;
+}
+
+.site-nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.site-nav a {
+  padding-block: 0.25rem;
+  border-bottom: 1px solid transparent;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+
+.site-nav a:hover,
+.site-nav a.active {
+  color: var(--rose);
+}
+
+.site-nav a.active {
+  border-bottom-color: var(--rose);
+}
+
+.language-button {
+  margin-left: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--rose);
+  border-radius: 0.25rem;
+  background: transparent;
+  color: var(--rose);
+  font: inherit;
+  letter-spacing: inherit;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+.language-button:hover {
+  background: var(--rose);
+  color: var(--paper);
+}
+
+main {
+  flex: 1;
+}
+
+.site-footer p {
+  margin-block: 1.5rem;
+  padding-top: 0.875rem;
+  border-top: 1px solid var(--line);
+  color: var(--faint);
+  font-size: 0.75rem;
+}
+
+/* ---------- Shared pieces ---------- */
+
+.page-title {
+  margin-bottom: 0.75rem;
+  font-size: clamp(3rem, 8vw, 3.75rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.lead {
+  max-width: 28rem;
+  color: var(--muted);
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+
+.label {
+  color: var(--rose);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.section {
+  padding-block: 2.75rem;
+  border-top: 1px solid var(--line);
+}
+
+.section-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .section-grid {
+    grid-template-columns: 1fr 3fr;
+  }
+}
+
+.arrow {
+  display: inline-block;
+  transition: transform 0.2s;
+}
+
+a:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* ---------- Home: hero ---------- */
+
+.hero {
+  display: grid;
+  align-items: center;
+  gap: 2.5rem;
+  padding-block: 3.25rem;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    grid-template-columns: 1.3fr 1fr;
+    padding-block: 4.5rem;
+  }
+}
+
+.hero-role,
+.page-subtitle {
+  margin-bottom: 1.5rem;
+  color: var(--rose);
+  font-size: clamp(1.5rem, 4vw, 1.875rem);
+}
+
+.portrait {
+  width: 100%;
+  max-width: 17rem;
+  margin-inline: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 999px 999px 0.375rem 0.375rem;
+}
+
+.about-text {
+  font-size: clamp(1.125rem, 2.5vw, 1.25rem);
+  line-height: 1.7;
+}
+
+/* ---------- Home: work ---------- */
+
+.projects {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.project {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .project {
+    grid-template-columns: 1.4fr 1fr;
+    align-items: center;
+    gap: 1.75rem;
+  }
+}
+
+.project-media {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  background: var(--rose-soft);
+}
+
+.project-media img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.5s ease;
+}
+
+/* Animations are shown whole on the 40C3 background colour */
+.project-media--contain {
+  background: #001300;
+}
+
+.project-media--contain img {
+  object-fit: contain;
+  object-position: center;
+}
+
+.project:hover .project-media img {
+  transform: scale(1.03);
+}
+
+.project-title {
+  margin-bottom: 0.5rem;
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.project-text {
+  margin-bottom: 0.5rem;
+  color: var(--muted);
+}
+
+.project-stack {
+  margin-bottom: 0.75rem;
+  color: var(--faint);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+.project-link {
+  color: var(--rose);
+  font-weight: 500;
+}
+
+/* ---------- Home: contact ---------- */
+
+.contact-list li + li {
+  border-top: 1px solid var(--line);
+}
+
+.contact-list a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.75rem;
+  font-size: 1.125rem;
+  transition: color 0.2s;
+}
+
+.contact-list li:first-child a {
+  padding-top: 0;
+}
+
+.contact-list a:hover {
+  color: var(--rose);
+}
+
+.contact-handle {
+  color: var(--faint);
+  font-size: 0.875rem;
+}
+
+.contact-list a:hover .contact-handle {
+  color: var(--rose);
+}
+
+/* ---------- Blog ---------- */
+
+.blog {
+  padding-block: 3.25rem;
+}
+
+@media (min-width: 768px) {
+  .blog {
+    padding-block: 4.5rem;
+  }
+}
+
+.blog .section {
+  margin-top: 2.75rem;
+  padding-bottom: 0;
+}
+
+.blog .label {
+  margin-bottom: 1.5rem;
+}
+
+.post + .post {
+  border-top: 1px solid var(--line);
+}
+
+.post {
+  display: grid;
+  gap: 0.5rem;
+  padding-block: 1.75rem;
+}
+
+.post:first-child {
+  padding-top: 0;
+}
+
+@media (min-width: 768px) {
+  .post {
+    grid-template-columns: 10rem 1fr;
+    gap: 2rem;
+  }
+}
+
+.post time {
+  color: var(--faint);
+  font-size: 0.875rem;
+}
+
+.post h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.post-body {
+  margin-top: 0.75rem;
+}
+
+.empty {
+  color: var(--muted);
+}
+
+.not-found-link {
+  margin-top: 2rem;
+}
+
+a:hover .arrow--back {
+  transform: translateX(-4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
 }
