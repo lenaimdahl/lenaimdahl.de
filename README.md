@@ -2,7 +2,7 @@
 
 My personal website: who I am, a few projects from my [atelier](https://atelier.lenaimdahl.de) and a blog about our family life with disability. German by default, English with the button in the header or via `?lang=en`.
 
-Built with React, TypeScript and Vite. The styles are plain CSS, no framework.
+Built with React, TypeScript and Vite. The styles are plain CSS.
 
 ## What you need
 
