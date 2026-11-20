@@ -3,8 +3,8 @@ FROM node:26.13.1-alpine@sha256:6bd9ab43c0ec0190ca7b2d193906cb8b7edf6e7f4afa43dd
 
 WORKDIR /app
 
-COPY package.json package-lock.json .npmrc ./
-RUN npm ci
+COPY package.json package-lock.json ./
+RUN npm ci --ignore-scripts
 
 COPY index.html vite.config.mts tsconfig.json ./
 COPY public/ public/
