@@ -1,3 +1,17 @@
+## [1.1.1](https://github.com/lenaimdahl/lenaimdahl.de/compare/v1.1.0...v1.1.1) (2026-11-20)
+
+### Features
+
+* restyle pages ([#22](https://github.com/lenaimdahl/lenaimdahl.de/issues/22)) ([117835a](https://github.com/lenaimdahl/lenaimdahl.de/commit/117835af2dc520b5b215b3f1cc4633c0ed7db4bb))
+
+### Bug Fixes
+
+* change readme ([26f8ca6](https://github.com/lenaimdahl/lenaimdahl.de/commit/26f8ca630d48261c10d2395fcfe0cb42d2e18fea))
+
+### Miscellaneous Chores
+
+* **deps-dev:** Bump prettier from 3.9.10 to 3.10.1 ([#23](https://github.com/lenaimdahl/lenaimdahl.de/issues/23)) ([e64a8b1](https://github.com/lenaimdahl/lenaimdahl.de/commit/e64a8b134f805c2f66b20af5fba3fe63aeb4add6))
+
 ## [1.1.0](https://github.com/lenaimdahl/lenaimdahl.de/compare/v1.0.1...v1.1.0) (2026-11-19)
 
 ### Features
