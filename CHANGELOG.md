@@ -1,3 +1,9 @@
+## [1.1.2](https://github.com/[secure]/[secure].de/compare/v1.1.1...v1.1.2) (2026-11-20)
+
+### Bug Fixes
+
+* Deploy only after successful publish ([de6aed1](https://github.com/[secure]/[secure].de/commit/de6aed124f6b1ec62484a78c3c19ceb070405dec))
+
 ## [1.1.1](https://github.com/lenaimdahl/lenaimdahl.de/compare/v1.1.0...v1.1.1) (2026-11-20)
 
 ### Features
