@@ -10,12 +10,7 @@ const YEAR = new Date().getFullYear();
 export default function SiteLayout() {
   const { pathname, hash } = useLocation();
   const { t } = useLanguage();
-  const page: Page =
-    pathname === PATHS.HOME
-      ? "home"
-      : pathname === PATHS.BLOG
-        ? "blog"
-        : "notFound";
+  const page: Page = pathname === PATHS.HOME ? "home" : "notFound";
 
   useEffect(() => {
     if (hash) {
@@ -34,9 +29,6 @@ export default function SiteLayout() {
         <nav aria-label={t.nav.label} className="site-nav">
           <NavLink to={PATHS.HOME} end>
             {t.nav.home}
-          </NavLink>
-          <NavLink to={PATHS.BLOG} end>
-            {t.nav.blog}
           </NavLink>
           <LanguageSwitcher />
         </nav>

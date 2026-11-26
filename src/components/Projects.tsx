@@ -1,4 +1,5 @@
 import bookshelf from "../img/work/bookshelf.jpg";
+import contrastLab from "../img/work/contrast-lab.png";
 import citizenLab from "../img/work/barbara-citizen.png";
 import logoMotion from "../img/work/logo-motion.gif";
 import { useLanguage } from "../i18n/useLanguage";
@@ -16,6 +17,13 @@ interface Project {
 const ATELIER = "https://atelier.lenaimdahl.de";
 
 const projects: Project[] = [
+  {
+    id: "contrastLab",
+    stack: "React · TypeScript · culori · Vitest",
+    href: `${ATELIER}/contrast-lab`,
+    image: contrastLab,
+    position: "left top",
+  },
   {
     id: "logoMotion",
     stack: "p5.js · TypeScript",
