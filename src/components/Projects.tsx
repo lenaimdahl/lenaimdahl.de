@@ -52,7 +52,7 @@ export default function Projects() {
 
   return (
     <ul className="projects">
-      {projects.map((project) => {
+      {projects.map((project, index) => {
         const text = t.projects[project.id];
 
         return (
@@ -82,6 +82,9 @@ export default function Projects() {
                 />
               </div>
               <div>
+                <span className="project-number">
+                  0x{String(index + 1).padStart(2, "0")}
+                </span>
                 <h3 className="project-title">{text.title}</h3>
                 <p className="project-text">{text.description}</p>
                 <p className="project-stack">{project.stack}</p>
