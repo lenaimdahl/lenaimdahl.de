@@ -1,3 +1,9 @@
+## [1.2.0](https://github.com/[secure]/[secure].de/compare/v1.1.2...v1.2.0) (2026-11-26)
+
+### Features
+
+* add contrast lab project ([#24](https://github.com/[secure]/[secure].de/issues/24)) ([3a9f1dd](https://github.com/[secure]/[secure].de/commit/3a9f1dd32452f15a8b3e82ec279e5c678e3af9bd))
+
 ## [1.1.2](https://github.com/[secure]/[secure].de/compare/v1.1.1...v1.1.2) (2026-11-20)
 
 ### Bug Fixes
