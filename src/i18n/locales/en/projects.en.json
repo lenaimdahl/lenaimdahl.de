@@ -1,4 +1,9 @@
 {
+  "contrastLab": {
+    "title": "Contrast Lab",
+    "description": "Pick two colours and see if your text is readable. The lab checks the contrast against WCAG 2.2 and suggests the nearest colour that passes.",
+    "imageAlt": "The Contrast Lab: a dark red heading on an olive background, colour sliders and a report card with a contrast score of 6.3 to 1"
+  },
   "logoMotion": {
     "title": "40C3 Logo Motion",
     "description": "I'm playing around with the 40C3 logo and trying to make it move with code: typing, glitches, flipping digits and color waves. Some of it works, some of it is not quite there yet.",
