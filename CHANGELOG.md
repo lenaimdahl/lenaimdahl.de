@@ -1,3 +1,13 @@
+## [1.2.1](https://github.com/[secure]/[secure].de/compare/v1.2.0...v1.2.1) (2026-11-28)
+
+### Bug Fixes
+
+* **deps:** Bump nginx from `0b98e1d` to `5bfced7` ([#25](https://github.com/[secure]/[secure].de/issues/25)) ([de0d03d](https://github.com/[secure]/[secure].de/commit/de0d03d6bbde24a8d3f70ce636c42433726f97a5))
+
+### Miscellaneous Chores
+
+* **deps-dev:** Bump oxlint from 1.93.0 to 1.94.0 ([#26](https://github.com/[secure]/[secure].de/issues/26)) ([060bdff](https://github.com/[secure]/[secure].de/commit/060bdff90c248a745526c8415195fe4949144bb4))
+
 ## [1.2.0](https://github.com/[secure]/[secure].de/compare/v1.1.2...v1.2.0) (2026-11-26)
 
 ### Features
